@@ -1,0 +1,142 @@
+html, body { 
+  margin:0; 
+  padding:0; 
+  height:100%; 
+}
+
+#mainMenu {
+  list-style-type: none;
+  text-align: center;
+}
+
+.button {
+  width: 300px;
+  height: 65px;
+  background-color: lightskyblue;
+  margin-bottom: 20px;
+  font-size: 24pt;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttonRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.valueRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#parentNode {
+  width: 155px;
+  height: 150px;
+  border-color: green;
+  border-width: 3px;
+  border-style: solid;
+  position: relative;
+  top: 20px;
+  left: 600px;
+  background-color: lightgray;
+}
+
+#contextNode {
+  width: 155px;
+  height: 150px;
+  border-color: green;
+  border-width: 3px;
+  border-style: dashed;
+  position: absolute;
+  top: 60px;
+  left: 1000px;
+  background-color: lightgray;
+}
+
+#reduxNode {
+  width: 155px;
+  height: 150px;
+  border-color: green;
+  border-width: 3px;
+  border-style: dashed;
+  position: absolute;
+  top: 60px;
+  left: 1000px;
+  background-color: lightgray;
+}
+
+#hookNode {
+  width: 155px;
+  height: 150px;
+  border-color: green;
+  border-width: 3px;
+  border-style: dashed;
+  position: absolute;
+  top: 60px;
+  left: 1000px;
+  background-color: lightgray;
+}
+
+
+#child1Node {
+  width: 155px;
+  height: 150px;
+  border-color: blue;
+  border-width: 3px;
+  border-style: solid;
+  position: relative;
+  display: inline-block;
+  top: 80px;
+  left: 450px;
+  background-color: lightgray;
+}
+
+#child2Node {
+  width: 155px;
+  height: 150px;
+  border-color: blue;
+  border-width: 3px;
+  border-style: solid;
+  display: inline-block;
+  position: relative;
+  top: 80px;
+  left: 600px;
+  background-color: lightgray;
+}
+
+#grandchild21Node {
+  width: 155px;
+  height: 150px;
+  border-color: yellow;
+  border-width: 3px;
+  border-style: solid;
+  position: relative;
+  top: 130px;
+  left: 655px;
+  background-color: lightgray;
+}
+
+#grandchild22Node {
+  width: 155px;
+  height: 150px;
+  border-color: yellow;
+  border-width: 3px;
+  border-style: solid;
+  position: relative;
+  display: inline-block;
+  top: -26px;
+  left: 855px;
+  background-color: lightgray;
+}
