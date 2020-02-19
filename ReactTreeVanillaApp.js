@@ -4,8 +4,10 @@ import './App.css';
 import {Line, LineTo, SteppedLineTo} from 'react-lineto';
 import ReactDOM from 'react-dom';
 import ReactTreeApp from './ReactTreeApp';
-// import { Tree, TreeNode } from 'react-organizational-chart';
-// import styled from 'styled-components';
+import DialogContainer from './DialogContainer.js';
+import DisplayCode from './DisplayCode.js'
+import code from './code-ReactTreeVanillaApp.js';
+
 
 function GrandChild1(props) {
   return (
@@ -143,23 +145,39 @@ class ReactTreeVanillaApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
+    this.openDisplayCode = this.openDisplayCode.bind(this);
+    this.onCancelDisplayCode = this.onCancelDisplayCode.bind(this);
+    this.state = {
+      showCode: false
+    }
   }
 
   goBack() {
     ReactDOM.render(<ReactTreeApp/>, document.getElementById('root'));
   }
 
+  openDisplayCode() {
+    this.setState({showCode: true});
+  }
+
+  onCancelDisplayCode() {
+    this.setState({showCode: false});
+  }
+
+
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%', border: '3px solid white'}}>
-        <span style={{marginLeft: '50px'}} onClick={this.goBack}><button>Back</button><label style={{fontSize: '24pt', marginLeft: '200px'}}>Vanilla</label></span>
-        <Parent name={'Parent'}></Parent>
-        {/* <StyledTreeExample></StyledTreeExample> */}
+        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
+          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Vanilla</label><button onClick={this.openDisplayCode}>Code</button></span>
+        </div>
+        <Parent className='parent' name={'Parent'}></Parent>
+        <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
+          code={code} onCancel={this.onCancelLogout}/>}
+        width='1000px' height='700px' title={'ReactTreeVanillaApp.js'}></DialogContainer>
       </div>
     )
   }
 }
-
-
 
 export default ReactTreeVanillaApp;

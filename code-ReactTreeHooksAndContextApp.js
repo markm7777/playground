@@ -1,4 +1,4 @@
-
+let code = `
 import React, {useContext} from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
@@ -219,31 +219,16 @@ class ReactTreeHooksAndContextApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
-    this.openDisplayCode = this.openDisplayCode.bind(this);
-    this.onCancelDisplayCode = this.onCancelDisplayCode.bind(this);
-    this.state = {
-      showCode: false
-    }
   }
 
   goBack() {
     ReactDOM.render(<ReactTreeApp/>, document.getElementById('root'));
   }
 
-  openDisplayCode() {
-    this.setState({showCode: true});
-  }
-
-  onCancelDisplayCode() {
-    this.setState({showCode: false});
-  }
-
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%', border: '3px solid white'}}>
-        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
-          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Hooks + Context</label><button onClick={this.openDisplayCode}>Code</button></span>
-        </div>
+        <span style={{marginLeft: '50px'}}><button onClick={this.goBack}>Back</button><button onClick={this.openDisplayCode}>Code</button><label style={{fontSize: '24pt', marginLeft: '200px'}}>Hooks + Context</label></span>
         <Parent name={'Parent'}></Parent>
         <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
           code={code} onCancel={this.onCancelLogout}/>}
@@ -256,3 +241,5 @@ class ReactTreeHooksAndContextApp extends React.Component {
 
 
 export default ReactTreeHooksAndContextApp;
+`
+export default code;

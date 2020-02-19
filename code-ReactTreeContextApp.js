@@ -1,12 +1,12 @@
-
-import React, {useContext} from 'react';
+let code = `
+import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
 import ReactTreeApp from './ReactTreeApp';
 import {Line, LineTo, SteppedLineTo} from 'react-lineto';
 import DialogContainer from './DialogContainer.js';
 import DisplayCode from './DisplayCode.js'
-import code from './code-ReactTreeHooksAndContextApp.js';
+import code from './code-ReactTreeContextApp.js';
 
 
 const userContext = React.createContext();
@@ -32,43 +32,53 @@ function GrandChild1(props) {
 }
 
 function GrandChild2(props) {
-  const data = useContext(userContext);
-
   return (
-    <div id='grandchild22Node'  className='G2'>
-      <div className='content'>
-        <div className='titleRow'>
-        {props.name}<b style={{color: 'red', paddingLeft: '5px'}}>(ctx)</b>
-        </div>
-        <br/>
-        <div className='buttonRow'>
-          <button onClick={data.update}>Click</button>
-        </div>
-        <div className='valueRow'>
-          <p>{data.count}</p>
-        </div>
-      </div>
-    </div>
+    <userContext.Consumer>
+      {(data) => {
+        return (
+          <div id='grandchild22Node'  className='G2'>
+            <div className='content'>
+              <div className='titleRow'>
+              {props.name}<b style={{color: 'red', paddingLeft: '5px'}}>(ctx)</b>
+              </div>
+              <br/>
+              <div className='buttonRow'>
+                <button onClick={data.update}>Click</button>
+              </div>
+              <div className='valueRow'>
+                <p>{data.count}</p>
+              </div>
+            </div>
+          </div>
+        )
+      }}
+    </userContext.Consumer>
   )
 }
 
+
 function Child1(props) {
-  const data = useContext(userContext);
   return (
-    <div id='child1Node'  className='C1'>
-      <div className='content'>
-        <div className='titleRow'>
-          {props.name}<b style={{color: 'red', paddingLeft: '5px'}}>(ctx)</b>
-        </div>
-        <br/>
-        <div className='buttonRow'>
-          <button onClick={data.update}>Click</button>
-        </div>
-        <div className='valueRow'>
-          <p>{data.count}</p>
-        </div>
-      </div>
-    </div>
+    <userContext.Consumer>
+      {(data) => {
+        return (
+          <div id='child1Node'  className='C1'>
+            <div className='content'>
+              <div className='titleRow'>
+                {props.name}<b style={{color: 'red', paddingLeft: '5px'}}>(ctx)</b>
+              </div>
+              <br/>
+              <div className='buttonRow'>
+                <button onClick={data.update}>Click</button>
+              </div>
+              <div className='valueRow'>
+                <p>{data.count}</p>
+              </div>
+            </div>
+          </div>
+        )
+      }}
+    </userContext.Consumer>
   )
 }
 
@@ -92,18 +102,11 @@ class Child2 extends React.Component {
     setTimeout(this.myFunction, 300)
   }
 
-  //this doesn't work in classes
-  //const data = useContext(userContext);
-  
-  //should use this, but it doesn't work - yet
-  //static contextType = userContext
-
   render() {
     return (  
       <userContext.Consumer>
         {(data) => {
           return (
-
             <>
               <div id='child2Node'  className='C2'>
                 <div className='content'>
@@ -125,11 +128,12 @@ class Child2 extends React.Component {
           )
         }}
       </userContext.Consumer>
-    )
+    )  
   }
 }
 
 function Context(props) {
+
   return (
     <div id='contextNode' className='CON'>
       <div className='content'>
@@ -140,10 +144,7 @@ function Context(props) {
           createContext()
         </div>
         <div className='titleRow'>
-          Provider
-        </div>
-        <div className='titleRow'>
-          Consumer/useContext
+          Provider/Consumer
         </div>
         <br/>
       </div>
@@ -166,11 +167,17 @@ class Parent extends React.Component {
     }
   }
 
-  //this doesn't work in classes
-  //const data = useContext(userContext);
-  
-  //should use this, but it doesn't work - yet
-  //static contextType = userContext
+//TODO - why is 'this' lost below? 
+  // myFunction() {
+  //   this.setState((prev) => {
+  //     return {count: prev.count + 1}; 
+  //   });
+  // }
+
+  // handleClick() {
+  //   setTimeout(this.myFunction, 300)
+  // }
+
 
   render() {
     return (
@@ -180,7 +187,6 @@ class Parent extends React.Component {
             {(data) => {
               return (
                 <>
-                  {console.log(this.context)}
                   <div id='parentNode' className='P'>
                     <div className='content'>
                       <div className='titleRow'>
@@ -208,14 +214,14 @@ class Parent extends React.Component {
                 </>
               )
             }}
-            </userContext.Consumer>
+          </userContext.Consumer>
         </userContext.Provider>   
       </>
     )
   }
 }
 
-class ReactTreeHooksAndContextApp extends React.Component {
+class ReactTreeContextApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
@@ -224,6 +230,7 @@ class ReactTreeHooksAndContextApp extends React.Component {
     this.state = {
       showCode: false
     }
+
   }
 
   goBack() {
@@ -241,13 +248,12 @@ class ReactTreeHooksAndContextApp extends React.Component {
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%', border: '3px solid white'}}>
-        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
-          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Hooks + Context</label><button onClick={this.openDisplayCode}>Code</button></span>
-        </div>
+        <span style={{marginLeft: '50px'}}><button onClick={this.goBack}>Back</button><button onClick={this.openDisplayCode}>Code</button><label style={{fontSize: '24pt', marginLeft: '200px'}}>Context</label></span>
         <Parent name={'Parent'}></Parent>
         <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
           code={code} onCancel={this.onCancelLogout}/>}
-        width='1000px' height='700px' title={'ReactTreeHooksAndContextApp.js'}></DialogContainer>
+        width='1000px' height='700px' title={'ReactTreeVanillaApp.js'}></DialogContainer>
+
       </div>
     )
   }
@@ -255,4 +261,6 @@ class ReactTreeHooksAndContextApp extends React.Component {
 
 
 
-export default ReactTreeHooksAndContextApp;
+export default ReactTreeContextApp;
+`
+export default code;

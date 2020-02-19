@@ -8,7 +8,7 @@ import ReactTreeReduxApp from './ReactTreeReduxApp';
 import ReactTreeHooksApp from './ReactTreeHooksApp';
 import PlaygroundApp from './PlaygroundApp';
 import ReactTreeHooksAndContextApp from './ReactTreeHooksAndContextApp';
-
+import DummyApp from './DummyApp.js';
 
 class ReactTreeApp extends React.Component {
   constructor(props) {
@@ -23,7 +23,8 @@ class ReactTreeApp extends React.Component {
       hooks: ReactTreeHooksApp,
       redux: ReactTreeReduxApp,
       play: PlaygroundApp,
-      hookscontext: ReactTreeHooksAndContextApp
+      hookscontext: ReactTreeHooksAndContextApp,
+      dummy: DummyApp
     };
     const DynamicComponent = componentsMap[type];
     ReactDOM.render(<DynamicComponent/>, document.getElementById('root'));
@@ -31,30 +32,46 @@ class ReactTreeApp extends React.Component {
 
   render() {
     return (
-      <>
-        <h1 style={{marginLeft: '50px'}}>React State Management Options (and Hooks):</h1>
-        <ul id='mainMenu'>
+      <div id='mainContainer'>
+        <h1 style={{marginLeft: '50px'}}>React - State Management Options, Hooks, Misc.</h1>
+        <div id='mainSubContainer'>
+          <ul id='mainMenu'>
+            <li>
+              <button className='button' onClick={() => this.onClick('vanilla')}>Vanilla</button>
+            </li>
+            <li>
+              <button className='button' onClick={() => this.onClick('context')}>Context</button>
+            </li>
+            <li>
+              <button className='button' onClick={() => this.onClick('redux')}>Redux</button>
+            </li>
+            <li>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('hooks')}>Hooks</button>
+            </li>
+            <li>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('hookscontext')}>Context+Hooks</button>
+            </li>
+          </ul>
+          <ul id='mainMenu'>
           <li>
-            <button className='button' onClick={() => this.onClick('vanilla')}>Vanilla</button>
-          </li>
-          <li>
-            <button className='button' onClick={() => this.onClick('context')}>Context</button>
-          </li>
-          <li>
-            <button className='button' onClick={() => this.onClick('redux')}>Redux</button>
-          </li>
-          <li>
-            <button className='button' style={{marginTop: '50px'}} onClick={() => this.onClick('hooks')}>Hooks</button>
-          </li>
-          <li>
-            <button className='button' style={{marginTop: '50px'}} onClick={() => this.onClick('hookscontext')}>Context+Hooks</button>
-          </li>
-          <li>
-            <button className='button' style={{marginTop: '50px'}} onClick={() => this.onClick('play')}>Playground</button>
-          </li>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('play')}>Playground</button>
+            </li>
 
-        </ul>
-      </>
+            <li>
+              <button className='button' onClick={() => this.onClick('dummy')}>?</button>
+            </li>
+            <li>
+              <button className='button' onClick={() => this.onClick('dummy')}>?</button>
+            </li>
+            <li>
+              <button className='button' onClick={() => this.onClick('dummy')}>?</button>
+            </li>
+            <li>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('dummy')}>?</button>
+            </li>
+          </ul>
+        </div>
+      </div>
     )
   }
 }

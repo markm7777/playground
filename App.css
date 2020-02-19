@@ -60,7 +60,7 @@ html, body {
   border-width: 3px;
   border-style: dashed;
   position: absolute;
-  top: 60px;
+  top: 75px;
   left: 1000px;
   background-color: lightgray;
 }
@@ -72,7 +72,7 @@ html, body {
   border-width: 3px;
   border-style: dashed;
   position: absolute;
-  top: 60px;
+  top: 75px;
   left: 1000px;
   background-color: lightgray;
 }
@@ -84,7 +84,7 @@ html, body {
   border-width: 3px;
   border-style: dashed;
   position: absolute;
-  top: 60px;
+  top: 75px;
   left: 1000px;
   background-color: lightgray;
 }
@@ -139,4 +139,15 @@ html, body {
   top: -26px;
   left: 855px;
   background-color: lightgray;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mainSubContainer {
+  display: flex;
+  flex-direction: row;
 }

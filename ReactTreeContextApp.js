@@ -4,6 +4,9 @@ import './App.css';
 import ReactDOM from 'react-dom';
 import ReactTreeApp from './ReactTreeApp';
 import {Line, LineTo, SteppedLineTo} from 'react-lineto';
+import DialogContainer from './DialogContainer.js';
+import DisplayCode from './DisplayCode.js'
+import code from './code-ReactTreeContextApp.js';
 
 
 const userContext = React.createContext();
@@ -52,7 +55,6 @@ function GrandChild2(props) {
     </userContext.Consumer>
   )
 }
-
 
 function Child1(props) {
   return (
@@ -130,7 +132,6 @@ class Child2 extends React.Component {
 }
 
 function Context(props) {
-
   return (
     <div id='contextNode' className='CON'>
       <div className='content'>
@@ -149,9 +150,7 @@ function Context(props) {
   )
 }
 
-
 class Parent extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -222,22 +221,39 @@ class ReactTreeContextApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
+    this.openDisplayCode = this.openDisplayCode.bind(this);
+    this.onCancelDisplayCode = this.onCancelDisplayCode.bind(this);
+    this.state = {
+      showCode: false
+    }
   }
 
   goBack() {
     ReactDOM.render(<ReactTreeApp/>, document.getElementById('root'));
   }
 
+  openDisplayCode() {
+    this.setState({showCode: true});
+  }
+
+  onCancelDisplayCode() {
+    this.setState({showCode: false});
+  }
+
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%', border: '3px solid white'}}>
-        <span style={{marginLeft: '50px'}} onClick={this.goBack}><button>Back</button><label style={{fontSize: '24pt', marginLeft: '200px'}}>Context</label></span>
+        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
+          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Context</label><button onClick={this.openDisplayCode}>Code</button></span>
+        </div>
         <Parent name={'Parent'}></Parent>
+        <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
+          code={code} onCancel={this.onCancelLogout}/>}
+        width='1000px' height='700px' title={'ReactTreeContextApp.js'}></DialogContainer>
+
       </div>
     )
   }
 }
-
-
 
 export default ReactTreeContextApp;

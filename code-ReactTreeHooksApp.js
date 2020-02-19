@@ -1,16 +1,17 @@
+let code = `
 import React from 'react';
 import './App.css';
 import ReactDOM from 'react-dom';
 import ReactTreeApp from './ReactTreeApp';
 import {Line, LineTo, SteppedLineTo} from 'react-lineto';
 import {useState,  useEffect, useContext, createContext} from 'react';
-import DialogContainer from './DialogContainer.js';
-import DisplayCode from './DisplayCode.js'
-import code from './code-ReactTreeHooksApp.js';
 
 // HOOKS 
 // using useState hook to hold state in 'Parent' and changed all class components to function components
 // prop drilling is still used
+
+//TODO above:
+// add context or useContext hook?   
 
 function GrandChild1(props) {
   return (
@@ -125,39 +126,22 @@ class ReactTreeHooksApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
-    this.openDisplayCode = this.openDisplayCode.bind(this);
-    this.onCancelDisplayCode = this.onCancelDisplayCode.bind(this);
-    this.state = {
-      showCode: false
-    }
   }
 
   goBack() {
     ReactDOM.render(<ReactTreeApp/>, document.getElementById('root'));
   }
 
-  openDisplayCode() {
-    this.setState({showCode: true});
-  }
-
-  onCancelDisplayCode() {
-    this.setState({showCode: false});
-  }
-
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%', border: '3px solid white'}}>
-        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
-          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Hooks</label><button onClick={this.openDisplayCode}>Code</button></span>
-        </div>
+        <span style={{marginLeft: '50px'}}><button  onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '200px'}}>Hooks</label></span>
         <Parent name={'Parent'}></Parent>
-        <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
-          code={code} onCancel={this.onCancelLogout}/>}
-        width='1000px' height='700px' title={'ReactTreeHooksApp.js'}></DialogContainer>
       </div>
     )
   }
 }
 
 export default ReactTreeHooksApp;
-
+`
+export default code;
