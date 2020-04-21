@@ -1,0 +1,46 @@
+#containerBackground {
+  background: rgba(100, 100, 100, 0.4);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#containerContent {
+  background: rgba(255, 255, 255, 1.0);
+  box-shadow: 6px 6px rgb(100, 100, 100);
+  position: relative;
+  top: 25px;
+  left: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* border-color: yellow;
+  border-width: 3px;
+  border-style: solid; */
+  z-index: 100;
+}
+
+#containerContentTitle {
+  background-color:white;    
+  text-align: center;
+  height: 33px;
+  font-size:15pt;
+} 
+
+#cancelX {
+  height:22px; 
+  text-align: right;
+  display: inline-block;
+  position: absolute;
+  right: 3px;
+}
+
+#containerContentCustom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-left: 10px;
+}
