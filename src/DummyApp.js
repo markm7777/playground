@@ -15,7 +15,7 @@ class DummyApp extends React.Component {
   render() {
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%'}}>
-        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
+        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingTop: '15px', paddingBottom: '15px'}}>
           <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Dummy</label><button onClick={this.openDisplayCode}>Code</button></span>
         </div>
      </div>

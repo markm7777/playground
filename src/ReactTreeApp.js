@@ -7,9 +7,11 @@ import ReactTreeContextApp from './ReactTreeContextApp';
 import ReactTreeReduxApp from './ReactTreeReduxApp';
 import ReactTreeHooksApp from './ReactTreeHooksApp';
 import HigherOrderFunctionApp from './HigherOrderFunctionApp.js';
-import PlaygroundApp from './PlaygroundApp';
+import JavaScriptExercises from './JavaScriptExercises.js';
+import MiscApp from './MiscApp';
 import ReactTreeHooksAndContextApp from './ReactTreeHooksAndContextApp';
 import DummyApp from './DummyApp.js';
+import GiphyGetterApp from './GiphyGetterApp.js';
 
 class ReactTreeApp extends React.Component {
   constructor(props) {
@@ -24,7 +26,9 @@ class ReactTreeApp extends React.Component {
       hooks: ReactTreeHooksApp,
       redux: ReactTreeReduxApp,
       hof: HigherOrderFunctionApp,
-      play: PlaygroundApp,
+      exercises: JavaScriptExercises,
+      misc: MiscApp,
+      giphy: GiphyGetterApp,
       hookscontext: ReactTreeHooksAndContextApp,
       dummy: DummyApp
     };
@@ -59,13 +63,13 @@ class ReactTreeApp extends React.Component {
               <button className='button' onClick={() => this.onClick('hof')}>HigherOrderFunction</button>
             </li>
             <li>
-              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('play')}>Playground</button>
+              <button className='button' onClick={() => this.onClick('exercises')}>JavaScriptExercises</button>
             </li>
             <li>
-              <button className='button' onClick={() => this.onClick('dummy')}>?</button>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('giphy')}>GiphyGetter</button>
             </li>
             <li>
-              <button className='button' onClick={() => this.onClick('dummy')}>?</button>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('misc')}>Misc</button>
             </li>
             <li>
               <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('dummy')}>?</button>

@@ -145,9 +145,78 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #333333;
+  flex: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: white;
 }
 
 #mainSubContainer {
   display: flex;
   flex-direction: row;
+}
+
+#exercisesTitleDiv {
+  text-align: center;
+  background-color: #0000FF;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+#exercisesMainDiv {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding-right: 20px;
+  overflow-y: auto;
+}
+
+.exerciseDiv {
+  margin-bottom: 10px;
+  font-family: 'courier';
+  font-size: 14pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+
+}
+#exerciseDescription {
+  padding-left: 10px;
+  color: yellow ;
+}
+
+.details {
+  margin-left: 60px;
+}
+
+.result {
+  color:lime;
+}
+
+#searchDiv {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#searchInput {
+  width: 50%;
+  margin-right: 10px;
+}
+
+#quantityInput {
+  width: 30px;
+  margin-right: 20px;
+}
+
+#imageDiv {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+#goButton {
+  width: 120px;
+  height: 40px;
+  background-color: lightgray;
 }

@@ -25,66 +25,6 @@ function HingeText(props) {
   )
 }
 
-
-let NewThing = (props) => {
-
-  return (
-    <div>{props.stuff}</div>
-
-  )
-
-}
-
-
-//memoize (CODESMITH - caching, closure, higher order function, object stuff)
-
-// function MemoizeClass(props) {
-
-//   // const mutiplyBy2 = (number) => number * 2;
-//   const [result, setResult] = useState(0);
-//   let memoizedMultiplyBy2 = '';
-
-//   useEffect(() => {
-//     memoizedMultiplyBy2 = memoize(props.func);
-//   }, []);
-
-
-//   const memoize = (originalFunction) => {
-//     const trackCalls = {};
-  
-//     return function(num) {
-//       if (trackCalls[num] !== undefined) {
-//         return trackCalls[num] + ' [cache]';
-//       }
-//       else {
-//         const output = originalFunction(num);
-//         trackCalls[num] = output;
-//         return output;
-//       }
-  
-//     }
-//   }
-
-//   const handleClick = () => {
-//     // const memoizedMultiplyBy2 = memoize(props.func);
-//     let x = memoizedMultiplyBy2(20);
-//     setResult(x);
-//   }
-
-//   return (
-//     <>
-//       <button onClick={handleClick}>Memoize</button>
-//       <span> {result}</span>
-//     </>
-//   )
-
-// }
-
-
-
-
-
-
 //useStateHook
 const Recruit = (props) => {
   const [count, setCount] = useState({vvalue: 2});
@@ -129,7 +69,9 @@ const Recruit = (props) => {
 
 
 
-class PlaygroundApp extends React.Component {
+
+
+class MiscApp extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
@@ -157,25 +99,25 @@ class PlaygroundApp extends React.Component {
 
     return (
       <div style={{height: '100%', position: 'absolute', width: '100%'}}>
-        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingBottom: '15px'}}>
-          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Playground!</label><button onClick={this.openDisplayCode}>Code</button></span>
+        <div style={{textAlign: 'center', backgroundColor: 'lightGreen', paddingTop: '15px', paddingBottom: '15px'}}>
+          <span><button onClick={this.goBack}>Back</button><label style={{fontSize: '24pt', marginLeft: '50px', marginRight: '50px'}}>Misc</label><button onClick={this.openDisplayCode}>Code</button></span>
         </div>
-        <NewThing stuff={'the good stuff'}></NewThing>
 
         <HingeText>
           Hello
         </HingeText>
         <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
           code={code} onCancel={this.onCancelLogout}/>}
-          width='1000px' height='700px' title={'PlaygroundApp.js'}>
+          width='1000px' height='700px' title={'MiscApp.js'}>
         </DialogContainer>
 
         <Recruit array={array}>
         </Recruit>
+
      </div>
     )
   }
 }
 
 
-export default PlaygroundApp;
+export default MiscApp;
