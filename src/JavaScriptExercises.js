@@ -7,6 +7,7 @@ import DialogContainer from './DialogContainer.js';
 import DisplayCode from './DisplayCode.js'
 import code from './code-JavaScriptExercises.js';
 
+let git = true;
 
 
 function RemoveDuplicatesFromArray(props) {
@@ -137,33 +138,114 @@ function RemoveFalsyValuesFromArray(props) {
       <p className='details'>arr.filter(Boolean)</p>
       <p className='details result'>Result: [{props.arr.filter(Boolean).toString()}]</p>
     </div>
-
-
   )
 }
 
-function GetRandomValueFromArray () {
+function GetRandomValueFromArray (props) {
+  let result = props.arr[Math.floor(Math.random() * props.arr.length)]
   return (
-    <div id='exerciseDescription'>10. Get Random Value From Array</div>
+    <>
+      <p id='exerciseDescription'>10. Get Random Value From Array ([{props.arr.toString()}])</p>
+      <p className='details result'>Result: {result}</p>
+    </>
+    )
+}
+
+function GetHammingDistance(props) {
+
+  let count = 0;
+ 
+
+  if ((props.x >= 0 && props.x < 231) && (props.y >= 0 && props.y < 231)) { 
+    let x2 = (('00000000' + props.x.toString(2)).substr(-8));
+    let y2 = (('00000000' + props.y.toString(2)).substr(-8));
+    let x2Arr = [...x2];
+    let y2Arr = [...y2];
+    
+    console.log(x2Arr);
+    console.log(y2Arr);
+
+    x2Arr.map((item, index) => {
+        if (item != y2Arr[index]) {
+            count ++;
+        }
+    })
+  }
+
+  return (
+    <>
+      <p id='exerciseDescription'>11. Get Hamming distance between two integers ({props.x}, {props.y})</p>
+      <p className='details'>The Hamming distance between two integers is the number of positions at which the corresponding bits are different</p>
+      <p className='details'>1 (0 0 0 1)</p>
+      <p className='details'>4 (0 1 0 0)</p>
+      <p className='details'>Result: 2</p>
+      <p className='details result'>Result: {count}</p>
+    </>
+    )
+}  
+
+function NimGame(props) {
+
+  let canIWin = ((props.n % 4) != 0); //if n is evenly divisible by 4 - you will lose
+
+  return (
+    <>
+      <p id='exerciseDescription'>12. Nim Game ({props.n})</p>
+      <p className='details'>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones.</p>
+      <p className='details'>The one who removes the last stone will be the winner.</p>
+      <p className='details'>You will take the first turn to remove the stones.</p>
+      <p className='details'>Ex. If n=4, you can't win.</p>
+      <p className='details result'>Result: {canIWin.toString()}</p>
+    </>
+    )
+
+}  
+
+
+function ReverseArray(props) {
+  // let loopCount = Math.floor(props.arr.length / 2);
+  // let result = props.arr.slice();
+
+  // for(let i = 0; i < loopCount; i ++) {
+  //   let temp = result[i];
+  //   result[i] = result[result.length - 1 - i];
+  //   result[result.length - 1 - i] = temp;   
+  // }
+  // let result = props.arr.reverse();
+  let result = props.arr.slice().reverse();
+
+  return (
+    <>
+      <p id='exerciseDescription'>12. Reverse Array</p>
+      <p className='details'>The old fashioned way - looping and swapping.</p>
+      <p className='details'>Or the new fashioned way - let newArr = arr.reverse().</p>
+      <p className='details'>Or the don't modify the original way - let newArr = [...arr].reverse().</p>
+      <p className='details'>Or the don't modify the original way - let newArr = colors.slice().reverse().</p>
+      <p className='details result'>Result: [{result.toString()}]</p>
+    </>
   )
 }
 
-function ReverseArray() {
+function LastIndexOf(props) {
+  let result = props.arr.lastIndexOf(props.val);
+
   return (
-    <div id='exerciseDescription'>11. Reverse Array</div>
-  )
+    <>
+      <p id='exerciseDescription'>13. Last Index Of ([{props.arr.toString()}], {props.val})</p>
+      <p className='details result'>Result: [{result.toString()}]</p>
+    </>
+    )
 }
 
-function LastIndexOf() {
+function SumAllValuesInArray(props) {
+  let result = props.arr.reduce((x,y) => x + y);
   return (
-    <div id='exerciseDescription'>12. Last Index Of</div>
-  )
-}
-
-function SumAllValuesInArray() {
-  return (
-    <div id='exerciseDescription'>13. Sum All Values In Array</div>
-  )
+    <>
+      <p id='exerciseDescription'>14. Sum All Values In Array ([{props.arr.toString()}])</p>
+      <p className='details'>arr.reduce((x,y) => x + y)</p>
+      <p className='details result'>Result: {result.toString()}</p>
+    </>
+    )
 }
 
 
@@ -234,19 +316,27 @@ class JavaScriptExercises extends React.Component {
           </div>
 
           <div className='exerciseDiv'>
-            <GetRandomValueFromArray></GetRandomValueFromArray>
+            <GetRandomValueFromArray arr={['a', 'b', 'c', 'd', 'e', 'f']}></GetRandomValueFromArray>
           </div>
 
           <div className='exerciseDiv'>
-            <ReverseArray></ReverseArray>
+            <GetHammingDistance x={13} y={8}></GetHammingDistance>
+          </div>
+          
+          <div className='exerciseDiv'>
+            <NimGame n={2}></NimGame>
           </div>
 
           <div className='exerciseDiv'>
-            <LastIndexOf></LastIndexOf>
+            <ReverseArray arr={['1', '2', '3', '4']}></ReverseArray>
           </div>
 
           <div className='exerciseDiv'>
-            <SumAllValuesInArray></SumAllValuesInArray>
+            <LastIndexOf arr={[1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7]} val={5}></LastIndexOf>
+          </div>
+
+          <div className='exerciseDiv'>
+            <SumAllValuesInArray arr={[1, 5, 2, 6, 3, 5, 2, 3, 6, 5, 2, 7]}></SumAllValuesInArray>
           </div>
 
         </div>

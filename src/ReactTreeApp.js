@@ -13,6 +13,8 @@ import ReactTreeHooksAndContextApp from './ReactTreeHooksAndContextApp';
 import DummyApp from './DummyApp.js';
 import GiphyGetterApp from './GiphyGetterApp.js';
 
+let git = true;
+
 class ReactTreeApp extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,9 @@ class ReactTreeApp extends React.Component {
   }
 
   onClick(type) {
+    if ((git === true) && (type === 'exercises')) {
+      return;
+    }
     const componentsMap = {
       vanilla: ReactTreeVanillaApp,
       context: ReactTreeContextApp,

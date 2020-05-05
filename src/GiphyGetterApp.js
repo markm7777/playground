@@ -50,6 +50,27 @@ class Giphy extends React.Component {
       })
     })
     .catch(error => console.log(error))
+
+
+    let x = 1;
+    let y = 24;
+
+    let x2 = (('00000000' + x.toString(2)).substr(-8));
+    let y2 = (('00000000' + y.toString(2)).substr(-8));
+    let x2Arr = [...x2];
+    let y2Arr = [...y2];
+    
+    console.log(x2Arr);
+    console.log(y2Arr);
+
+    let count = 0;
+    x2Arr.map((item, index) => {
+        if (item != y2Arr[index]) {
+            count ++;
+        }
+    })
+
+    console.log(count);
   }
 
   render() {
@@ -115,6 +136,7 @@ class GiphyGetterApp extends React.Component {
 
      </div>
     )
+
   }
 }
 
