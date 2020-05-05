@@ -22,9 +22,6 @@ class ReactTreeApp extends React.Component {
   }
 
   onClick(type) {
-    if ((git === true) && (type === 'exercises')) {
-      return;
-    }
     const componentsMap = {
       vanilla: ReactTreeVanillaApp,
       context: ReactTreeContextApp,
@@ -67,9 +64,12 @@ class ReactTreeApp extends React.Component {
             <li>
               <button className='button' onClick={() => this.onClick('hof')}>HigherOrderFunction</button>
             </li>
-            <li>
+            {git !== true ? (
+             <li>
               <button className='button' onClick={() => this.onClick('exercises')}>JavaScriptExercises</button>
             </li>
+            ) : ''}
+
             <li>
               <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('giphy')}>GiphyGetter</button>
             </li>
