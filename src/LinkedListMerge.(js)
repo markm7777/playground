@@ -1,0 +1,97 @@
+class LinkedListNode {
+  constructor(data) {
+      this.data = data;
+      this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+      this.head = null;
+  }
+
+  add(data) {
+    let newNode = new LinkedListNode(data)  
+
+    if (this.head === null) {
+      this.head = newNode;
+    }
+    else {
+      let current = this.head;
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+  }
+}  
+
+function CreateLinkedLists(list1Arr, list2Arr) {
+  let lists = {
+    list1: null,
+    list2: null
+  }
+
+  lists.list1 = new LinkedList();
+  list1Arr.map((x) => lists.list1.add(x))
+
+  lists.list2 = new LinkedList();
+  list2Arr.map((x) => lists.list2.add(x))
+
+  return lists;
+}
+
+function AssembleResult(result) {
+  let arr = [];
+  let currentNode = result;
+  while(currentNode !== null) {
+    arr.push(currentNode.data);
+    currentNode = currentNode.next;
+  }
+  return arr;
+}
+
+function MergeLinkedLists(props) {    
+  let resultHead = null;
+
+  if ((props.list1Arr.length == 0) && (props.list1Arr.length == 0)) {
+    return;
+  }
+
+  let lists = CreateLinkedLists(props.list1Arr, props.list2Arr);
+  let currentNode = null; //cNx in diagram
+  let otherNode = null;  //oNx in diagram
+
+  if (lists.list1.head.data <= lists.list2.head.data) { 
+    currentNode = lists.list1.head;
+    otherNode = lists.list2.head
+  }
+  else {
+    currentNode = lists.list2.head;
+    otherNode = lists.list1.head;
+  }
+  resultHead = currentNode;
+
+  while (currentNode.next !== null) {
+    if (otherNode.data <= currentNode.next.data) {
+      //save my next, change my next. go to my new next
+      let tempNode = currentNode.next;
+      currentNode.next = otherNode;
+      otherNode = tempNode;
+      currentNode = currentNode.next;
+    }
+    else {
+      //go to my next
+      currentNode = currentNode.next;
+    }
+  }
+  currentNode.next = otherNode;
+
+  return (
+    <>
+      <p id='exerciseDescription'>15. MergeLinkedLists ([{props.list1Arr.toString()}], [{props.list2Arr.toString()}])</p>
+      {/* <p className='details result'>Result: {JSON.stringify(lists)}</p> */}
+      <p className='details result'>Result: {AssembleResult(resultHead).toString()}</p>
+    </>
+  )
+}

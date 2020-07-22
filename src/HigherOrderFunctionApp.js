@@ -47,7 +47,7 @@ class Memoize extends React.Component {
   render() {
     return (
       <>
-        <h3>Memoize</h3>
+        <h3>Memoize (cache) - Function will only do calculation once. Subsequent calls will return cached value</h3>
         <div style={{marginBottom: '10px'}}>
           <label>Function: </label>
           <label>{this.props.func.toString()}</label>

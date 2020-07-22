@@ -243,3 +243,52 @@ html, body {
   border-style: solid;
 
 }
+
+
+#content div {
+	display: inline-block;
+	margin: 10px;
+	background-color: orange;
+	color: white;
+	padding: 30px;
+	width: 10px;
+	height: 10px;
+	text-align: center;
+}
+
+#d3div1 {
+  /* border-color: black;
+  border-width: 4px;
+  border-style: solid; */
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 0px;
+}
+
+#d3div2 {
+  /* border-color: black;
+  border-width: 4px;
+  border-style: solid; */
+  width: 100%;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  min-height: 20px;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.grid line {
+  stroke: grey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
