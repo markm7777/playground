@@ -156,6 +156,8 @@ class DragAndDrop extends React.Component {
     reader.readAsDataURL(files[0])
     reader.onloadend = function() {
       let img = document.createElement('img')
+      img.setAttribute('width', '50px');
+      img.setAttribute('height', '50px');
       img.src = reader.result
       document.getElementById('drop-area').appendChild(img)
     }
