@@ -18,7 +18,7 @@ function Task(props) {
   }
 
   const onMouseOver = (e) => {
-    e.target.style.cursor='pointer';
+    e.target.style.cursor='grab';
   }
 
   const onDragOver = (e) => {
@@ -30,7 +30,6 @@ function Task(props) {
   return(
     <>
       <div id={props.id} className={'task'} draggable={'true'} onDragStart={onDragStart} onMouseOver={onMouseOver} onDragOver={onDragOver} >
-        {/* <img id={props.id} draggable={'true'} onDragStart={onDragStart} onMouseOver={onMouseOver} src={process.env.PUBLIC_URL + props.src} alt="Pineapple" style={{width:'200px', height:'200px', display: 'inline-block'}}></img> */}
         <img id={props.id} src={process.env.PUBLIC_URL + props.src} alt="Pineapple" style={{width:'200px', height:'200px', display: 'inline-block'}}></img>
       </div>
     </>
@@ -73,8 +72,6 @@ function DragDropBox(props) {
    return(
     <div id={props.id} className={props.className} onDragEnter={onDragEnter} onDrop={drop} onDragOver={(e) => dragOver(e)}>
       {props.tasksArr.map((item) => {return (<Task key={item.id} dropId={props.id} id={item.id} src={item.src}></Task>)})}
-      {/* {React.Children.map(props.children, (item) => {return (<Task dropId={item.id} id={item.id} name={item.id} src={item.src}></Task>)})} */}
-      
     </div>
   )
 
@@ -99,24 +96,11 @@ class DragAndDrop extends React.Component {
   render() {
     return(
       <div id='mainDiv'>
-
-        {/* <Board id='board1' className='board'>
-          <Card id={'card1'} className={'card'} draggable={'true'}>
-          </Card>            
-          <Card id={'card2'} className={'card'} draggable={'true'}>
-          </Card>            
-        </Board>  
-        <Board id='board2' className='board'>
-          <Card id='card3' className='card' draggable='true'>
-          </Card>            
-        </Board>   */}
-
-        <DragDropBox id={'completed'} className={'dropzone'} tasksArr={tasksArr}>
+        <DragDropBox id={'todos'} className={'dropzone'} tasksArr={tasksArr}>
         </DragDropBox>
 
-        <DragDropBox id={'todos'} className={'dropzone'} tasksArr={[]}>
+        <DragDropBox id={'completed'} className={'dropzone'} tasksArr={[]}>
         </DragDropBox>
-
       </div>
     )
   }

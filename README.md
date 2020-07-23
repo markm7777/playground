@@ -12,6 +12,4 @@ Some categories:
   Misc exercises  
   Etc...  
 
-### [Drag and Drop not working]
-
 Client: create-react-app  
