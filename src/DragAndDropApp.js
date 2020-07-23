@@ -82,8 +82,8 @@ function DragDropBox(props) {
 
 let tasksArr = [
   {
-    id: 'shelby',
-    src: '/images/Shelby.jpg'
+    id: 'shed',
+    src: '/images/shed1.jpg'
   },
   {
     id: 'sv650',
