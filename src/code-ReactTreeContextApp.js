@@ -167,18 +167,6 @@ class Parent extends React.Component {
     }
   }
 
-//TODO - why is 'this' lost below? 
-  // myFunction() {
-  //   this.setState((prev) => {
-  //     return {count: prev.count + 1}; 
-  //   });
-  // }
-
-  // handleClick() {
-  //   setTimeout(this.myFunction, 300)
-  // }
-
-
   render() {
     return (
       <>

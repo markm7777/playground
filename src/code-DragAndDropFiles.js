@@ -1,4 +1,4 @@
-
+let code = `
 import React from 'react';
 import './App.css';
 import './DragAndDropFiles.css';
@@ -7,10 +7,8 @@ import ReactTreeApp from './ReactTreeApp';
 
 import DialogContainer from './DialogContainer.js';
 import DisplayCode from './DisplayCode.js'
-import code from './code-DragAndDropFiles.js';
+import code from './code-playground.js';
 import * as d3 from "d3";
-
-let git = true;
 
 function mapRange(in_min, in_max, out_min, out_max) {
 
@@ -82,14 +80,6 @@ class DragAndDrop extends React.Component {
   }
 
   uploadFilesXHR() {
-    if (git) {
-      this.setState({result: `${this.files.length} file(s) uploaded to server`, disabled: true, completed: 100});
-      this.removePreviews(this.files);
-      this.files = [];
-      return;
-    }
-
-
     if (this.files.length > 0) {
       var xhr = new XMLHttpRequest()
       var formData = new FormData()
@@ -97,12 +87,13 @@ class DragAndDrop extends React.Component {
       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
 
       xhr.upload.addEventListener("progress", (e) => {
+        console.log(e.loaded);
         this.setState({completed: (e.loaded * 100.0 / e.total) || 100 })
       })
 
       xhr.addEventListener('readystatechange', (e) => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          this.setState({result: `${this.files.length} file(s) uploaded to server`, disabled: true});
+          this.setState({result: ${`${`this.files.length`} file(s) uploaded to server`, `disabled: true`})
           this.removePreviews(this.files);
           this.files = [];
         }
@@ -201,7 +192,7 @@ class DragAndDropFiles extends React.Component {
         </div>
         <DialogContainer show={this.state.showCode} onCancel={this.onCancelDisplayCode} dialogContent={<DisplayCode 
           code={code} onCancel={this.onCancelLogout}/>}
-          width='1000px' height='700px' title={'DragAndDropFiles.js'}>
+          width='1000px' height='700px' title={'D3Example.js'}>
         </DialogContainer>
 
         <div style={{height: '90%', position: 'absolute', width: '100%'}}>
@@ -214,6 +205,7 @@ class DragAndDropFiles extends React.Component {
 }
 
 export default DragAndDropFiles;
-
+`
+export default code
 
 

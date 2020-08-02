@@ -112,8 +112,8 @@ class MiscApp extends React.Component {
           width='1000px' height='700px' title={'MiscApp.js'}>
         </DialogContainer>
 
-        <Recruit array={array}>
-        </Recruit>
+        {/* <Recruit array={array}>
+        </Recruit> */}
 
      </div>
     )

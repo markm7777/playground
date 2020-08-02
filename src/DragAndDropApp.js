@@ -95,7 +95,7 @@ class DragAndDrop extends React.Component {
 
   render() {
     return(
-      <div id='mainDiv'>
+      <div id='mainDivDND'>
         <DragDropBox id={'todos'} className={'dropzone'} tasksArr={tasksArr}>
         </DragDropBox>
 

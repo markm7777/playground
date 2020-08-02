@@ -19,7 +19,7 @@ import DragAndDropFiles from './DragAndDropFiles.js';
 import DummyApp from './DummyApp.js';
 import GiphyGetterApp from './GiphyGetterApp.js';
 
-let git = true;
+let git = false;
 
 class ReactTreeApp extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class ReactTreeApp extends React.Component {
             </li>
             {git !== true ? (
             <li>
-              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('draganddropfiles')}>DragAndDropFiles</button>
+              <button className='button' style={{marginTop: '0px'}} onClick={() => this.onClick('draganddropfiles')}>File Uploader</button>
             </li>
             ) : ''}
             </ul>
